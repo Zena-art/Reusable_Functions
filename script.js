@@ -43,3 +43,29 @@ const array = ['a','aaa', 'bbbbb'];
 
 console.log(longestString(array));
 
+
+// task D):
+
+// Take an array of strings, and a number and return an array of the strings that are longer than the given number. 
+// For example, stringsLongerThan(['say', 'hello', 'in', 'the', 'morning'], 3); would return ["hello", "morning"].
+
+const strGreaterThanNum = (arr)  => {
+  let num;
+  let sortedArr = []; // to store strings
+  for(let i = 0; i < arr.length; i++){
+    if(typeof arr[i]=== 'number'){
+      num =  arr.splice(i, 1); // extracting the number from an array
+     i--; // adjusting 'i'  since the array length changes
+    }
+  }
+
+  //filter strings that are greater than num in length
+  sortedArr = arr.filter(str => str.length > num);
+  return sortedArr;
+
+}
+
+const newArr = ['javaScript', 'React', 4, 'MongoDB', 'CSS', 'HTML'];
+const result = strGreaterThanNum(newArr);
+console.log(result);
+
