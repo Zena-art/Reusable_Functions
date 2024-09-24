@@ -69,3 +69,14 @@ const newArr = ['javaScript', 'React', 4, 'MongoDB', 'CSS', 'HTML'];
 const result = strGreaterThanNum(newArr);
 console.log(result);
 
+// task E):
+// Take a number, n, and print every number between 1 and n without using loops. Use recursion.
+
+function printNumbers(n){
+  if(n < 1){
+    return;
+  }
+  printNumbers(n - 1);
+  console.log(n);
+}
+printNumbers(9);
