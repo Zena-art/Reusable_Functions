@@ -146,3 +146,15 @@ const modifiedUserData = userData.map((user) => {
   }
 })
 console.log(modifiedUserData);
+
+// task D):
+// Use the reduce method to calculate the sum of the ages.
+
+const totalAge = userData.reduce((sum, user) => sum + Number(user.age), 0);
+
+// Then use the result to calculate the average age.
+
+const avgResult = totalAge / userData.length;
+
+console.log(`average age of users: ${avgResult}`);
+
