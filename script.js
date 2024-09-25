@@ -158,3 +158,52 @@ const avgResult = totalAge / userData.length;
 
 console.log(`average age of users: ${avgResult}`);
 
+
+// Part 3 
+/**
+ * Part 3: Thinking Critically
+It is important to remember that when working with objects in JavaScript, we can either pass those objects into functions by value or by reference. This important distinction changes the way that functions behave, and can have large impacts on the way a program executes.
+For this section, develop functions that accomplish the following:
+Take an object and increment its age field.
+Take an object, make a copy, and increment the age field of the copy. Return the copy.
+For each of the functions above, if the object does not yet contain an age field, create one and set it to 0. Also, add (or modify, as appropriate) an updated_at field that stores a Date object with the current time.
+Thought experiment: since the Date object is an object, what would happen if we modified it in the copy of the object created in the second function using setTime() or another method? How could we circumvent potentially undesired behavior?
+ */
+
+// Function to increment age directly in the object
+function incrementAge(obj) {
+  if (!obj.age) {
+    obj.age = "0"; // Initialize age as a string if it doesn't exist
+  }
+  obj.age = (Number(obj.age) + 1).toString(); // Increment age and convert back to string
+  obj.updated_at = new Date(); // Update the timestamp to current time
+}
+
+// Function to make a copy and increment the age
+function incrementAgeInCopy(obj) {
+  const copy = { ...obj }; // Shallow copy of the object
+  if (!copy.age) {
+    copy.age = "0"; // Initialize age as a string if it doesn't exist
+  }
+  copy.age = (Number(copy.age) + 1).toString(); // Increment age and convert back to string
+  copy.updated_at = new Date(); // Create a new Date instance for the copy
+  return copy;
+}
+
+// Testing the functions
+console.log("Original user data:");
+console.log(userData);
+
+// Increment age directly for the first user
+incrementAge(userData[0]);
+console.log("After incrementing age for Bruce (original object):");
+console.log(userData[0]);
+
+// Create a copy and increment age for the second user
+const modifiedUser = incrementAgeInCopy(userData[1]);
+console.log("After incrementing age for Barry (copy):");
+console.log(modifiedUser);
+
+// Show original data again to verify it hasn't changed
+console.log("User data after operations:");
+console.log(userData);
