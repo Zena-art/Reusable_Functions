@@ -123,6 +123,26 @@ let userData = [
     occupation: "None", 
     age: "111" }
 ];
- 
+ // task A);
+ // Sort array by age
 userData.sort((a, b)=> a.age - b.age);
 console.log(userData);
+
+
+// task B):
+// Filter the array to remove entries with an age greater than 50.
+
+const under50 = userData.filter(o => o.age <= 50);
+console.log(under50);
+
+// task C):
+// Map the array to change the “occupation” key to “job” and increment every age by 1.
+const modifiedUserData = userData.map((user) => {
+  const {occupation,  ...rest } = user; // excluding occupation
+  return {
+    ... rest, // keep all other properties
+    job: occupation, // change occupation to job
+    age: Number(user.age) + 1
+  }
+})
+console.log(modifiedUserData);
